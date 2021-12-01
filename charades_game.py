@@ -2,7 +2,6 @@ import requests
 
 isWinner = False
 wrongPlayer = True
-wrongPoints = True
 wrongWinner = True
 currentPlayer = 1
 
@@ -22,16 +21,9 @@ while wrongPlayer:
 
 scores = [0 for i in range(numPlayers)]
 
-
-while wrongPoints:
-
-    pointsToWin = input("How many points in order to win? (2 - 6): ")
-    pointsToWin = int(pointsToWin)
-
-    if pointsToWin > 1 & pointsToWin < 7:
-        wrongPoints = False
-    else:
-        print("Not in range! Pick again!")
+response = requests.get("http://www.randomnumberapi.com/api/v1.0/random?min=2&max=6&count=1")
+pointsToWin = response.text[1]
+print("Number of points needed to win the game: " + pointsToWin)
 
 
 while not isWinner:
@@ -69,7 +61,7 @@ while not isWinner:
             print("Final Scores:\n-----------")
             for i in range(numPlayers):
                 print("Player " + str(i + 1) + ": " + str(scores[i]))
-                
+
 
     if currentPlayer < numPlayers:
         currentPlayer += 1
