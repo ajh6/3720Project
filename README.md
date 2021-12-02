@@ -1,5 +1,5 @@
 # 3720Project
-API Animal Charades Game
+Zoosaders!
 
 Our game will be a simple charades game that uses both a random animal generator API and pygame.
 
